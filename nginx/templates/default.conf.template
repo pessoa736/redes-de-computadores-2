@@ -1,0 +1,10 @@
+user nobody
+
+
+server {
+    root ${PATH_DOS_STATICOS};
+    listen *:${PORTA};
+
+    proxy_pass https://www.youtube.com/watch?v=R4xWbRBLj2I;
+}
+

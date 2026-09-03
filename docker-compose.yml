@@ -1,4 +1,14 @@
 services:
+  nginx:
+    image: nginx:latest
+    ports:
+      - "8080:80"
+    volumes:
+      - ./nginx:/etc/nginx
+    depends_on:
+      - app
+    environment:
+      - PORTA=
   app:
     build:
       context: .
