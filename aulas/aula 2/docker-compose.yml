@@ -9,6 +9,9 @@ services:
       - app
     environment:
       - PORTA=
+  
+  
+  # (existe so pq gosto de usar arch, sem nenhuma utilidade fora o ambiente linux familiar à minha pessoa) 
   app:
     image: archlinux:latest
     container_name: redes-de-computadores-2
