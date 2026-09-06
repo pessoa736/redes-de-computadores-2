@@ -10,9 +10,7 @@ services:
     environment:
       - PORTA=
   app:
-    build:
-      context: .
-      dockerfile: Dockerfile
+    image: archlinux:latest
     container_name: redes-de-computadores-2
     working_dir: /workspace
     volumes:
