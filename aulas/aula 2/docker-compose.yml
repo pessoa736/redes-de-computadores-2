@@ -1,23 +1,25 @@
 services:
   nginx:
-    image: nginx:latest
+    container_name: redes-de-computadores-2
+    image:  nginx:latest
     ports:
       - "8080:80"
+    working_dir: /var/www/html
     volumes:
-      - ./nginx:/etc/nginx
-    depends_on:
-      - app
+      - ./nginx/templates:/etc/nginx/templates:ro
+      - ./src:/var/www/html:ro
     environment:
-      - PORTA=
+      - NGINX_PORT=80
+    command: ["nginx", '-g', 'daemon off;']
+    
   
   
-  # (existe so pq gosto de usar arch, sem nenhuma utilidade fora o ambiente linux familiar à minha pessoa) 
-  app:
-    image: archlinux:latest
-    container_name: redes-de-computadores-2
-    working_dir: /workspace
-    volumes:
-      - .:/workspace
-    stdin_open: true
-    tty: true
-    command: /bin/bash
+  # (existe so pq gosto de usar arch, sem nenhuma utilidade fora o ambiente linux familiar à minha pessoa)  
+  # app:
+  #   image: archlinux:latest
+  #   working_dir: /app
+  #   volumes:
+  #     - .:/app
+  #   stdin_open: true
+  #   tty: true
+  #   command: /bin/bash
