@@ -1,0 +1,14 @@
+
+server {
+    listen       80;
+
+    location / {
+       root /var/www/html;
+       index index.html; 
+    }
+
+    location /herestoyou
+    {
+        return https://youtu.be/R4xWbRBLj2I?si=5gpE_lAD6op1TQFb&t=47;
+    }
+}
