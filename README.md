@@ -14,3 +14,8 @@ redes-de-computadores-2/    # root do repositorio.
     ...                     # talvez mais coisas
 
 ```
+
+
+## ROADMAP
+
+- [X] [Proxy Reverso](https://github.com/pessoa736/redes-de-computadores-2/tree/6bfa49aea15b00d15e37c32372a06a3337a66d00/aulas/aula%202)
