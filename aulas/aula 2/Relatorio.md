@@ -1,6 +1,6 @@
 # Relatorio da aula 2
 
-### 03/09/2026 - lab 03
+### 03/09/2026 
 
 Para nos introduzir o mundo do docker o professor nos pediu para execultar o comando `docker run hello-world`, apos executamos a gente teve que execultar o `docker --help` e `docker run --help` para compreender como usar a CLI do docker.
 
@@ -21,7 +21,7 @@ depois, foi pedido-nos para ler a documentação do Servidor que escolhemos, par
 
 ---
 
-### 07/09/2026 - 01:00 - casa
+### 07/09/2026 - 01:00 
 
 apos longas 4 horas no vscode quebrando bastante a cabeça tentando entender o porque o nginx não estava mostrando o [index.html](./src/index.html) na porta 8080, decobrir que meu erro tava em tentar passar o link externo com o  `proxy_pass` no server do [default.conf.template](./nginx/templates/default.conf.template) e isso acabava por quebrar o server de alguma maneira, mais apois pequisar, perguntar a AIs e ver videos no youtube, descobrir que o jeito certo é por um `return` em seguida do link.
 
@@ -32,12 +32,12 @@ adicionei uma rota api que leva diretamente para uma musica no youtube
 contudo feito, o resultado foi um pequeno serviço com um html bem basico e uma rota api que redireciona o para um video.
 
 ---
-### 07/09/2026 - 11:28 - casa
+### 07/09/2026 - 11:28 
 
 apos acordar hoje e comprir com minhas atividades domesticas, me sugiu uma duvida em relação ao proxy reverso. Sera que o return no location /herestoyou conta com proxy? pesquisei, e percebi que não é, e naverdade terei que montar um serviço em outro e mapealo.
 
 ---
-### 07/09/2026 - 13:21 - casa
+### 07/09/2026 - 13:21 
 
 adcionei um container proprio para o proxy_reverso e outro para um serviço que vai ser mapeado.
 
