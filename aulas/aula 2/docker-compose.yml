@@ -1,15 +1,24 @@
 services:
-  nginx:
+  proxy_reverso:
     container_name: redes-de-computadores-2
     image:  nginx:latest
     ports:
       - "8080:80"
     working_dir: /var/www/html
     volumes:
-      - ./nginx/templates:/etc/nginx/templates:ro
-      - ./src:/var/www/html:ro
-    environment:
-      - NGINX_PORT=80
+      - ./proxy_reverso/nginx:/etc/nginx/templates:ro
+      - ./proxy_reverso/src:/var/www/html:ro
+    command: ["nginx", '-g', 'daemon off;']
+
+  
+  herestoyou:
+    image:  nginx:latest
+    ports:
+      - "8081:80"
+    working_dir: /var/www/html
+    volumes:
+      - ./herestoyou/nginx:/etc/nginx/templates:ro
+      - ./herestoyou/src:/var/www/html:ro
     command: ["nginx", '-g', 'daemon off;']
     
   
