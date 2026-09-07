@@ -18,3 +18,16 @@ chegeui a montar um container com o docker-composer para o nginx
 ```
 
 depois, foi pedido-nos para ler a documentação do Servidor que escolhemos, para montar um Proxy Reverso.
+
+---
+
+07/09/2026 - casa
+
+apos longas 4 horas no vscode quebrando bastante a cabeça tentando entender o porque o nginx não estava mostrando o [index.html](./src/index.html) na porta 8080, decobrir que meu erro tava em tentar passar o link externo com o  `proxy_pass` no server do [default.conf.template](./nginx/templates/default.conf.template) e isso acabava por quebrar o server de alguma maneira, mais apois pequisar, perguntar a AIs e ver videos no youtube, descobrir que o jeito certo é por um `return` em seguida do link.
+
+
+adicionei uma rota api que leva diretamente para uma musica no youtube
+
+![alt text](./../../asserts/image.png)
+
+contudo feito, o resultado foi um pequeno serviço com um html bem basico e uma rota api que redireciona o para um video.
