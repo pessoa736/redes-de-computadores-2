@@ -1,0 +1,22 @@
+
+upstream heres {
+    server https://youtu.be/R4xWbRBLj2I?si=5gpE_lAD6op1TQFb&t=47;
+};
+
+
+
+server {
+    listen       80;
+
+    location / {
+       root /var/www/html;
+       index index.html; 
+    }
+
+    location /herestoyou/
+    {
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_pass http://heres/;
+    }
+}

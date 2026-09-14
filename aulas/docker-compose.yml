@@ -1,0 +1,35 @@
+services:
+  
+  
+  proxy-rev:
+    image: nginx:latest
+    working_dir: /var/www/html/
+    ports:
+      - "8080:90"
+
+    volumes:
+      - ./rev-proxy/:/etc/nginx/templates/:ro
+      - ./rev-proxy/static/:/var/www/html/:ro
+    command: ["nginx", '-g', 'daemon off;']
+
+
+
+  app1:
+    image: nginx:latest
+    ports:
+      - "8081:90"
+    volumes: 
+      - ./app1/default.conf.template:/etc/nginx/templates/default.conf.template:ro
+      - ./app1/static/:/var/www/html/:ro
+    command: ["nginx", '-g', 'daemon off;']
+
+
+  app2:
+    image: nginx:latest
+    ports:
+      - "8082:90"
+    volumes: 
+      - ./app2/default.conf.template:/etc/nginx/templates/default.conf.template:ro
+      - ./app2/static/:/var/www/html/:ro
+    command: ["nginx", '-g', 'daemon off;']
+  

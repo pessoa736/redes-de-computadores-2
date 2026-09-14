@@ -1,0 +1,15 @@
+
+server {
+    listen 90;
+    server_name localhost;
+
+    
+    location / {
+        root /var/www/html;
+        index index.html;
+    }
+
+
+
+    add_header X-App "app1" always;
+}

@@ -27,7 +27,7 @@ apos longas 4 horas no vscode quebrando bastante a cabeça tentando entender o p
 
 adicionei uma rota api que leva diretamente para uma musica no youtube
 
-![alt text](./../../asserts/image.png)
+![alt text](./../asserts/image.png)
 
 contudo feito, o resultado foi um pequeno serviço com um html bem basico e uma rota api que redireciona o para um video.
 
@@ -110,3 +110,10 @@ server {
     }
 }
 ```
+
+
+### 11/09/26 - 18:35
+
+aula passada (ontem, dia 10/09) o professor mandou a gente fazer o proxy reverso trocar entre dois servidores quando atualizar a pagina. como eu so fiz o clone e não fiz a push, as modificações que fiz ainda estão la no laboratorio. Decidi que vou refazer.
+
+decidi fazer o container do zero, salvei o  antigo para recordação na pasta `old`. 
