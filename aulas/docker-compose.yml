@@ -9,7 +9,20 @@ services:
 
     volumes:
       - ./rev-proxy/:/etc/nginx/templates/:ro
+      - ./rev-proxy/logs/:/etc/nginx/logs:rw
       - ./rev-proxy/static/:/var/www/html/:ro
+    command: ["nginx", '-g', 'daemon off;']
+
+  base-de-dados:
+    image: nginx:latest
+    working_dir: /var/www/html/
+    ports:
+      - "3080:90"
+
+    volumes:
+      - ./base-de-dados/:/etc/nginx/templates/:ro
+      - ./base-de-dados/logs/:/etc/nginx/logs:rw
+      - ./base-de-dados/static/:/var/www/html/:ro
     command: ["nginx", '-g', 'daemon off;']
 
 
@@ -20,6 +33,7 @@ services:
       - "8081:90"
     volumes: 
       - ./app1/default.conf.template:/etc/nginx/templates/default.conf.template:ro
+      - ./app1/logs/:/etc/nginx/logs:rw
       - ./app1/static/:/var/www/html/:ro
     command: ["nginx", '-g', 'daemon off;']
 
@@ -30,6 +44,7 @@ services:
       - "8082:90"
     volumes: 
       - ./app2/default.conf.template:/etc/nginx/templates/default.conf.template:ro
+      - ./app2/logs/:/etc/nginx/logs:rw
       - ./app2/static/:/var/www/html/:ro
     command: ["nginx", '-g', 'daemon off;']
   
