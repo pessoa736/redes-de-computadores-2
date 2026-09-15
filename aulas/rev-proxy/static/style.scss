@@ -18,6 +18,13 @@ header {
     padding-inline: 5%;    
     background-color: #00000031;
     background-size: cover;
+    
+    z-index: 9999;
+    display: flex;
+    position: sticky;
+    width: 100%;
+    border-bottom: 1px solid #ffffff31;
+    box-shadow: 0 15px 50px #ffffff31;
 }
 
 header-texture {
