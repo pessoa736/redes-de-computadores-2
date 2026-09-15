@@ -14,19 +14,28 @@ body {
 
 
 header {
-    position: sticky;
-    backdrop-filter: blur(1vmax);
     display: flex;
-    z-index: 9999;
-    padding-inline: 5%;
-
-    border-bottom: 1px solid #ffffff0f;
-    box-shadow: 0 15px 50px #ffffff0a;
+    padding-inline: 5%;    
+    background-color: #00000031;
+    background-size: cover;
 }
 
+header-texture {
+    width: 100%;
+    background-image: url(./Metal027_1K-JPG_Color.jpg);
+}
+
+header-box {
+    z-index: 9999;
+    display: flex;
+    position: sticky;
+    width: 100%;
+    border-bottom: 1px solid #ffffff31;
+    box-shadow: 0 15px 50px #ffffff31;
+}
 
 section { margin: 5% 1%; }
-hr { width: 100%;  color: #ffffff0f; border-bottom: none; }
+hr { width: 100%;  color: #ffffff31; border-bottom: none; }
 center { justify-content: center; }
 a { text-decoration: none; }
 
@@ -36,12 +45,41 @@ timeline {
     min-height: 75%;
     max-width: calc(1900px/1.8);
     
-    border-inline: 1px solid #ffffff0f;
+    border-inline: 1px solid #ffffff31;
     min-width: 500px;
     justify-self: center;
     display: flex;
     flex-direction: column;
-    box-shadow: 15px 15px 50px #ffffff0a;
+    box-shadow: 15px 15px 50px #ffffff31;
+}
+
+img {
+    box-shadow: 15px 15px 50px #ffffff31;
+    border: 1px solid #ffffff31;
+}
+
+
+@keyframes aaaaaaa {
+    0% {
+        transform: rotate(-10deg) scale(1);
+    }
+    25% {
+        transform: rotate(0) scale(1.05);
+    }
+    50% {
+        transform: rotate(10deg) scale(1.1);
+    }
+    75% {
+        transform: rotate(0) scale(1.05);
+    }
+    100% {
+        transform: rotate(-10deg) scale(1);
+    }
+}
+
+img:hover 
+{
+    animation: aaaaaaa 500ms ease infinite;
 }
 
 
@@ -56,7 +94,7 @@ button2 {
 button2:hover{
     transform: scale(1.02) translateY(-2px);
     background-color: #333;
-    box-shadow: 15px 15px 50px #ffffff0a;    
+    box-shadow: 15px 15px 50px #ffffff31;    
 }
 
 grid {
@@ -76,7 +114,7 @@ item {
 item:hover{
     transform: scale(1.02) translateY(-2px);
     background-color: #333;
-    box-shadow: 15px 15px 50px #ffffff0a; 
+    box-shadow: 15px 15px 50px #ffffff31; 
 }
 
 footer {

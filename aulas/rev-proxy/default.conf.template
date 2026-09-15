@@ -21,6 +21,7 @@ server {
 
 
     location /aleatorio/ {
+        proxy_ignore_client_abort off;
         add_header Cache-Control "no-store, no-cache, must-revalidate" always;
         proxy_pass http://apps/;
     }
