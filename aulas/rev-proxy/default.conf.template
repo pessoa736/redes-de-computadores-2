@@ -1,39 +1,30 @@
-error_log /etc/nginx/logs/erro.log;
+error_log /var/log/nginx/error.log debug;
 
 
 upstream apps {
-    server app1:90 weight=1;
-    server app2:90 weight=1;
+    server app-super-foda-1:90;
+    server app-super-foda-2:90;
 }
-
-
 
 server {
     listen 90;
     server_name localhost;
-
 
     location / {
         root /var/www/html;
         index index.html;
     }
 
-
-
     location /aleatorio/ {
         proxy_ignore_client_abort off;
-        add_header Cache-Control "no-store, no-cache, must-revalidate" always;
         proxy_pass http://apps/;
     }
-
     
     location /app1/ {
-        add_header Cache-Control "no-store, no-cache, must-revalidate" always;
-        proxy_pass http://app1:90/;
+        proxy_pass http://app-super-foda-1:90/;
     }
     
     location /app2/ {
-        add_header Cache-Control "no-store, no-cache, must-revalidate" always;
-        proxy_pass http://app2:90/;
+        proxy_pass http://app-super-foda-2:90/;
     }
 }

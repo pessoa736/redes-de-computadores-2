@@ -11,5 +11,5 @@ server {
     }
 
 
-    add_header X-App "app2" always;
+    add_header X-App "app-super-foda-2" always;
 }
