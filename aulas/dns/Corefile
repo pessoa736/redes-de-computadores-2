@@ -1,0 +1,7 @@
+. {
+    logs
+    erros
+    file /etc/coredns/db.com {
+        upstream
+    }
+}
