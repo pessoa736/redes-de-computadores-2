@@ -3,7 +3,25 @@
 
 
 services:
-  
+
+
+
+
+  DNS:
+    image: coredns/coredns:latest
+    volumes:
+      - ./dns/:/etc/coredns/:ro
+    command: -conf /etc/coredns/Corefile
+    working_dir: /etc/coredns/
+
+    networks:
+      rede-do-balacobaco:
+        ipv4_address: 172.20.0.100
+
+
+
+
+
 
   proxy-rev:
     image: nginx:latest
@@ -17,8 +35,21 @@ services:
       - ./rev-proxy/static/:/var/www/html/:ro
     command: ["nginx", '-g', 'daemon off;']
     depends_on:
+      - DNS
       - app1
       - app2
+
+    dns:
+      - 172.20.0.100
+    networks:
+      rede-do-balacobaco:
+        ipv4_address: 172.20.0.30
+
+
+
+
+
+
 
 
 
@@ -32,7 +63,16 @@ services:
       - ./app1/logs/:/etc/nginx/logs:rw
       - ./app1/static/:/var/www/html/:ro
     command: ["nginx", '-g', 'daemon off;']
+
+    networks:
+      rede-do-balacobaco:
+        ipv4_address: 172.20.0.10
   
+
+
+
+
+
 
   app2:
     image: nginx:latest
@@ -45,4 +85,17 @@ services:
       - ./app2/static/:/var/www/html/:ro
     command: ["nginx", '-g', 'daemon off;']
 
+    networks:
+      rede-do-balacobaco:
+        ipv4_address: 172.20.0.20
+
   
+
+
+networks:
+  rede-do-balacobaco:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 172.20.0.0/16
+        

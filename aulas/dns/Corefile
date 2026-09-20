@@ -1,7 +1,6 @@
 . {
-    logs
-    erros
-    file /etc/coredns/db.com {
-        upstream
-    }
+    log
+    errors
+    file /etc/coredns/db.com DomainExpansion.jjk.com
+    forward . 8.8.8.8
 }
