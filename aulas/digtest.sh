@@ -1,0 +1,1 @@
+docker compose exec proxy-rev bash -c "apt-get update && apt-get install -y dnsutils && dig @172.20.0.100 dig proxy-super-foda.DomainExpansion.jjk.com && exit"
