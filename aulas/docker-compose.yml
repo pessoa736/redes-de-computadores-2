@@ -19,12 +19,25 @@ services:
         ipv4_address: 172.20.0.100
 
 
+  DHCP:
+    image: jpillora/dnsmasq:latest
+    cap_add:
+      - NET_ADMIN
+    ports:
+      - "8085:8080"
+    volumes:
+      - ./dhcp/dnsmasq.conf:/opt/dnsmasq.conf
+    restart: always
+    networks:
+      rede-do-balacobaco:
+        ipv4_address: 172.20.0.40
+
 
 
 
 
   proxy-rev:
-    image: nginx:latest
+    image: ubuntu/nginx:latest
     working_dir: /var/www/html/
     ports:
       - "8080:90"
@@ -64,9 +77,12 @@ services:
       - ./app1/static/:/var/www/html/:ro
     command: ["nginx", '-g', 'daemon off;']
 
+    depends_on:
+      - DHCP
+    cap_add:
+      - NET_ADMIN
     networks:
       rede-do-balacobaco:
-        ipv4_address: 172.20.0.10
   
 
 
@@ -84,10 +100,12 @@ services:
       - ./app2/logs/:/etc/nginx/logs:rw
       - ./app2/static/:/var/www/html/:ro
     command: ["nginx", '-g', 'daemon off;']
-
+    depends_on:
+      - DHCP
+    cap_add:
+      - NET_ADMIN
     networks:
       rede-do-balacobaco:
-        ipv4_address: 172.20.0.20
 
   
 

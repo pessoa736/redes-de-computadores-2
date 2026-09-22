@@ -24,7 +24,6 @@ ns1 3600 IN A   172.20.0.100
 
 
 
-app-super-fodastico-1 IN A  172.20.0.10
-app-super-fodastico-2 IN A  172.20.0.20
-proxy-super-foda     IN A  172.20.0.30
+proxy-super-foda      IN A  172.20.0.30
+dhcp-super-foda       IN A  172.20.0.40 
 
