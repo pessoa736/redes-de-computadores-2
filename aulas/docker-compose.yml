@@ -14,7 +14,6 @@ services:
       - ./dnsmasq/hosts:/etc/hosts:ro
     cap_add:
       - NET_ADMIN
-
     restart: always
     networks:
       rede-do-balacobaco:
@@ -36,7 +35,9 @@ services:
       - ./rev-proxy/:/etc/nginx/templates/:ro
       - ./rev-proxy/logs/:/etc/nginx/logs:rw
       - ./rev-proxy/static/:/var/www/html/:ro
-    command: ["nginx", '-g', 'daemon off;']
+      - ./rev-proxy/esperar-dns.sh:/docker-entrypoint.d/esperar-dns.sh:ro
+    command: ["nginx", "-g", "daemon off;"]
+
     depends_on:
       - dnsmasq
       - app1
@@ -57,7 +58,9 @@ services:
 
   app1:
     hostname: app-super-fodastico-1
-    image: ubuntu/nginx:latest
+    build:
+      context: .
+      dockerfile: dockerfile-app-setup
     ports:
       - "8081:90"
 
@@ -82,7 +85,9 @@ services:
 
   app2:
     hostname: app-super-fodastico-2
-    image: ubuntu/nginx:latest
+    build:
+      context: .
+      dockerfile: dockerfile-app-setup
     ports:
       - "8082:90"
 
