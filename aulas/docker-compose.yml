@@ -7,36 +7,26 @@ services:
 
 
 
-  DNS:
-    image: coredns/coredns:latest
+  dnsmasq:
+    image: jpillora/dnsmasq:latest
     volumes:
-      - ./dns/:/etc/coredns/:ro
-    command: -conf /etc/coredns/Corefile
-    working_dir: /etc/coredns/
+      - ./dnsmasq/dnsmasq.conf:/etc/dnsmasq.conf:ro
+      - ./dnsmasq/hosts:/etc/hosts:ro
+    cap_add:
+      - NET_ADMIN
 
+    restart: always
     networks:
       rede-do-balacobaco:
         ipv4_address: 172.20.0.100
 
-
-  DHCP:
-    image: jpillora/dnsmasq:latest
-    cap_add:
-      - NET_ADMIN
-    ports:
-      - "8085:8080"
-    volumes:
-      - ./dhcp/dnsmasq.conf:/opt/dnsmasq.conf
-    restart: always
-    networks:
-      rede-do-balacobaco:
-        ipv4_address: 172.20.0.40
 
 
 
 
 
   proxy-rev:
+    hostname: proxy-reverso-super-fodastico
     image: ubuntu/nginx:latest
     working_dir: /var/www/html/
     ports:
@@ -48,7 +38,7 @@ services:
       - ./rev-proxy/static/:/var/www/html/:ro
     command: ["nginx", '-g', 'daemon off;']
     depends_on:
-      - DNS
+      - dnsmasq
       - app1
       - app2
 
@@ -56,7 +46,6 @@ services:
       - 172.20.0.100
     networks:
       rede-do-balacobaco:
-        ipv4_address: 172.20.0.30
 
 
 
@@ -67,7 +56,8 @@ services:
 
 
   app1:
-    image: nginx:latest
+    hostname: app-super-fodastico-1
+    image: ubuntu/nginx:latest
     ports:
       - "8081:90"
 
@@ -78,7 +68,7 @@ services:
     command: ["nginx", '-g', 'daemon off;']
 
     depends_on:
-      - DHCP
+      - dnsmasq
     cap_add:
       - NET_ADMIN
     networks:
@@ -91,7 +81,8 @@ services:
 
 
   app2:
-    image: nginx:latest
+    hostname: app-super-fodastico-2
+    image: ubuntu/nginx:latest
     ports:
       - "8082:90"
 
@@ -101,7 +92,7 @@ services:
       - ./app2/static/:/var/www/html/:ro
     command: ["nginx", '-g', 'daemon off;']
     depends_on:
-      - DHCP
+      - dnsmasq
     cap_add:
       - NET_ADMIN
     networks:
