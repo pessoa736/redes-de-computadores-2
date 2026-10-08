@@ -2,4 +2,4 @@
 
 echo 'send host-name = gethostname();' > /etc/dhcp/dhclient.conf
 dhclient -cf /etc/dhcp/dhclient.conf eth0
-exec nginx -g 'daemon off;'
+exec /docker-entrypoint.sh "$@"

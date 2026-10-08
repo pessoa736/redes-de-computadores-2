@@ -1,1 +1,1 @@
-docker compose exec proxy-rev bash -c "apt-get update  && apt-get install curl -y && curl -4 -v http://proxy-reverso-super-fodastico.DomainExpansion.jjk.com &&  curl -4 -v http://google.com" 
+docker compose exec proxy-rev bash -c "apt-get update  && apt-get install curl -y && curl -4 -v http://ns1.DomainExpansion.jjk.com &&  curl -4 -v http://google.com" 

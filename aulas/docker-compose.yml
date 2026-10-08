@@ -11,7 +11,8 @@ services:
     image: jpillora/dnsmasq:latest
     volumes:
       - ./dnsmasq/dnsmasq.conf:/etc/dnsmasq.conf:ro
-      - ./dnsmasq/hosts:/etc/hosts:ro
+      - ./dnsmasq/hosts:/etc/dnsmasq.d/dinamic-hosts:rw
+      - ./dnsmasq/order.sh:/etc/dnsmasq.d/order.sh:ro
     cap_add:
       - NET_ADMIN
     restart: always
