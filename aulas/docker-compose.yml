@@ -13,6 +13,7 @@ services:
       - ./dnsmasq/dnsmasq.conf:/etc/dnsmasq.conf:ro
       - ./dnsmasq/hosts:/etc/dnsmasq.d/dinamic-hosts:rw
       - ./dnsmasq/order.sh:/etc/dnsmasq.d/order.sh:ro
+      - ./dnsmasq/resolv.conf:/etc/resolv.conf:rw
     cap_add:
       - NET_ADMIN
     restart: always

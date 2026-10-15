@@ -4,8 +4,8 @@ error_log /var/log/nginx/error.log debug;
 
 upstream apps 
 {
-    server app-super-fodastico-1.DomainExpansion.jjk.com:90;
-    server app-super-fodastico-2.DomainExpansion.jjk.com:90;
+    server app-super-fodastico-1.DomainExpansion.com:90;
+    server app-super-fodastico-2.DomainExpansion.com:90;
 }
 
 server 
@@ -29,13 +29,11 @@ server
     
     location /app1/ 
     {
-        set $app1_backend app-super-fodastico-1.DomainExpansion.jjk.com;
-        proxy_pass http://$app1_backend:90/;
+        proxy_pass http://app-super-fodastico-1.DomainExpansion.com:90/;
     }
 
     location /app2/ 
     {
-        set $app2_backend app-super-fodastico-2.DomainExpansion.jjk.com;
-        proxy_pass http://$app2_backend:90/;
+        proxy_pass http://app-super-fodastico-2.DomainExpansion.com:90/;
     }
 }

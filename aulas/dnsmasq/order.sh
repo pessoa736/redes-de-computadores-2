@@ -5,7 +5,7 @@ IP=$3
 host=$4
 
 FILE=/etc/dnsmasq.d/dinamic-hosts
-SUFIXO=DomainExpansion.jjk.com
+SUFIXO=DomainExpansion.com
 
 [ "$host" = "ns1" ] && exit 0
 
