@@ -13,7 +13,6 @@ services:
       - ./dnsmasq/dnsmasq.conf:/etc/dnsmasq.conf:ro
       - ./dnsmasq/hosts:/etc/dnsmasq.d/dinamic-hosts:rw
       - ./dnsmasq/order.sh:/etc/dnsmasq.d/order.sh:ro
-      - ./dnsmasq/resolv.conf:/etc/resolv.conf:rw
     cap_add:
       - NET_ADMIN
     restart: always
@@ -35,6 +34,7 @@ services:
   
     volumes:
       - ./rev-proxy/:/etc/nginx/templates/:ro
+      - ./rev-proxy/resolv.conf:/etc/resolv.conf:ro
       - ./rev-proxy/logs/:/etc/nginx/logs:rw
       - ./rev-proxy/static/:/var/www/html/:ro
       - ./rev-proxy/esperar-dns.sh:/docker-entrypoint.d/esperar-dns.sh:ro
@@ -44,9 +44,6 @@ services:
       - dnsmasq
       - app1
       - app2
-
-    dns:
-      - 172.20.0.100
     networks:
       rede-do-balacobaco:
 

@@ -11,7 +11,7 @@ upstream apps
 server 
 {
     listen 90;
-    server_name localhost;
+    ssi on;
 
     resolver 172.20.0.100 valid=5s;
 

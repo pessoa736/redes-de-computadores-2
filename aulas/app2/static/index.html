@@ -7,5 +7,33 @@
 </head>
 <body>
     <div><h1>app2</h1></div>
+    <h2>Servidor</h2>
+        <table border="1" cellpadding="6">
+        <tr><td>Hostname</td><td><!--# echo var="hostname" --></td></tr>
+        <tr><td>IP do servidor</td><td><!--# echo var="server_addr" --></td></tr>
+        <tr><td>Porta</td><td><!--# echo var="server_port" --></td></tr>
+        <tr><td>server_name</td><td><!--# echo var="server_name" --></td></tr>
+        <tr><td>Versão do nginx</td><td><!--# echo var="nginx_version" --></td></tr>
+        <tr><td>PID do worker</td><td><!--# echo var="pid" --></td></tr>
+        <tr><td>Document root</td><td><!--# echo var="document_root" --></td></tr>
+        <tr><td>Hora do servidor</td><td><!--# echo var="time_iso8601" --></td></tr>
+        <tr><td>Hora (GMT)</td><td><!--# echo var="date_gmt" --></td></tr>
+        </table>
+
+        <h2>Cliente e requisição</h2>
+        <table border="1" cellpadding="6">
+        <tr><td>Seu IP (visto pelo servidor)</td><td><!--# echo var="remote_addr" --></td></tr>
+        <tr><td>Porta de origem</td><td><!--# echo var="remote_port" --></td></tr>
+        <tr><td>IP real (via proxy)</td><td><!--# echo var="http_x_real_ip" default="-" --></td></tr>
+        <tr><td>X-Forwarded-For</td><td><!--# echo var="http_x_forwarded_for" default="-" --></td></tr>
+        <tr><td>Host pedido</td><td><!--# echo var="http_host" --></td></tr>
+        <tr><td>Método</td><td><!--# echo var="request_method" --></td></tr>
+        <tr><td>URI</td><td><!--# echo var="request_uri" --></td></tr>
+        <tr><td>Protocolo</td><td><!--# echo var="server_protocol" --></td></tr>
+        <tr><td>Navegador</td><td><!--# echo var="http_user_agent" --></td></tr>
+        <tr><td>Idioma</td><td><!--# echo var="http_accept_language" default="-" --></td></tr>
+        <tr><td>Conexão nº / requisição nº</td>
+            <td><!--# echo var="connection" --> / <!--# echo var="connection_requests" --></td></tr>
+        </table>
 </body>
 </html>
