@@ -27,21 +27,6 @@
             </h3>
         </section>
         <hr/>
-        <section>
-            <center>
-            <h2 style="padding-bottom: 10px;"> acesse um app aleatorio</h2>
-            <a href="./aleatorio/"><button2 class="button2-hover-effect"> App Aleatorio </button2></a>
-            </center>
-        </section>
-        <hr/>
-        <section>
-            <h1>nossos apps</h1>
-            <grid>
-                <item onclick="window.location.href='/app1/'"><p>app1</p></item>
-                <item onclick="window.location.href='/app2/'"><p>app2</p></item>
-            </grid>
-        </section>
-        <hr/>
         <info-do-balacobaco>
             <h2>Servidor</h2>
             <table border="1" cellpadding="6">
@@ -55,7 +40,7 @@
             <tr><td>Hora do servidor</td><td><!--# echo var="time_iso8601" --></td></tr>
             <tr><td>Hora (GMT)</td><td><!--# echo var="date_gmt" --></td></tr>
             </table>
-
+            
             <h2>Cliente e requisição</h2>
             <table border="1" cellpadding="6">
             <tr><td>Seu IP (visto pelo servidor)</td><td><!--# echo var="remote_addr" --></td></tr>
@@ -72,6 +57,22 @@
                 <td><!--# echo var="connection" --> / <!--# echo var="connection_requests" --></td></tr>
             </table>
         </info-do-balacobaco>
+        <hr/>
+        <section>
+            <center>
+            <h2 style="padding-bottom: 10px;"> acesse um app aleatorio</h2>
+            <a href="./aleatorio/"><button2 class="button2-hover-effect"> App Aleatorio </button2></a>
+            </center>
+        </section>
+        <hr/>
+        <section>
+            <h1>nossos apps</h1>
+            <grid>
+                <item onclick="window.location.href='/app1/'"><p>app1</p></item>
+                <item onclick="window.location.href='/app2/'"><p>app2</p></item>
+            </grid>
+        </section>
+        <hr/>
     </timeline>
 
     <footer>

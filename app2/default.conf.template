@@ -3,6 +3,7 @@ error_log /etc/nginx/logs/erro.log;
 server {
     listen 90;
     server_name localhost;
+    ssi on;
 
     
     location / {

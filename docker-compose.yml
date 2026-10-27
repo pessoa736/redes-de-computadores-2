@@ -8,10 +8,11 @@ services:
 
 
   dnsmasq:
+    hostname: ns1
     image: jpillora/dnsmasq:latest
     volumes:
       - ./dnsmasq/dnsmasq.conf:/etc/dnsmasq.conf:ro
-      - ./dnsmasq/hosts:/etc/dnsmasq.d/dinamic-hosts:rw
+      - ./dnsmasq/dinamic-hosts:/etc/dnsmasq.d/dinamic-hosts:rw
       - ./dnsmasq/order.sh:/etc/dnsmasq.d/order.sh:ro
     cap_add:
       - NET_ADMIN
@@ -20,6 +21,10 @@ services:
       rede-do-balacobaco:
         ipv4_address: 172.20.0.100
 
+  bind9:
+    hostname: ns2
+    image: ubuntu/bind9:latest
+    container_name: ns1
 
 
 
