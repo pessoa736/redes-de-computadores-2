@@ -36,4 +36,22 @@ server
     {
         proxy_pass http://app-super-fodastico-2.DomainExpansion.com:90/;
     }
+
+
+
+    location ~ ^/ns1/(?<svc>[^/]+)/?(?<resto>.*)$
+    {
+        resolver 172.20.0.100 valid=5s;
+        proxy_set_header X-Resolvido-Por "ns1";
+        add_header X-Resolvido-Por "ns1" always;
+        proxy_pass http://$svc.DomainExpansion.com:90/$resto$is_args$args;
+    }
+
+    location ~ ^/ns2/(?<ini>[^/]*?)super(?<fim>[^/]*)/?(?<resto>.*)$
+    {
+        resolver 172.20.0.101 valid=5s;
+        proxy_set_header X-Resolvido-Por "ns2";
+        add_header X-Resolvido-Por "ns2" always;
+        proxy_pass http://${ini}hyper${fim}.DomainExpansion.com:90/$resto$is_args$args;
+    }
 }
