@@ -8,6 +8,6 @@ $TTL 300
 
 @                       IN NS ns1.DomainExpansion.com.
 @                       IN NS ns2.DomainExpansion.com.
-ns-super-fodastico-1    IN A  172.20.0.100
-ns-super-fodastico-2    IN A  172.20.0.101
+ns1                     IN A  172.20.0.100
+ns2                     IN A  172.20.0.101
 $GENERATE 110-150 app-hyper-fodastico-$ IN A 172.20.0.$

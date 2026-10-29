@@ -1,5 +1,6 @@
 zone "DomainExpansion.com" {
     type master;
     file "/etc/bind/zones/db.DomainExpansion.com";
-    allow-transfer { none; };
+    allow-update { 172.20.0.100; };
+    notify no;
 };

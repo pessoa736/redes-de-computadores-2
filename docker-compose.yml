@@ -23,12 +23,15 @@ services:
 
   bind9:
     hostname: ns2
-    image: ubuntu/bind9:latest
+    image: ubuntu/bind9:latest 
+    environment:
+      - BIND9_USER=root
     container_name: ns2
     volumes:
       - ./bind9/db.DomainExpansion.com:/etc/bind/zones/db.DomainExpansion.com:ro
       - ./bind9/named.conf.local:/etc/bind/named.conf.local:ro
       - ./bind9/named.conf.options:/etc/bind/named.conf.options:ro
+      - ./bind/zones:/etc/bind/zones
     networks:
       rede-do-balacobaco:
         ipv4_address: 172.20.0.101
